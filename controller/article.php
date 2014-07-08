@@ -6,12 +6,14 @@ class Article
 
     public function __construct()
     {
-
+        // ici le constructeur
     }
 
     public function afficherTaille()
     {
+        // affichage de la taille suivant la page où l'on se trouve (minifier ou pas)
 
+        // sinon retourner texte complet
     }
 
 
