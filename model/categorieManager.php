@@ -21,12 +21,19 @@ class CategorieManager
         $req->execute(array("desc" => $cat->getDescription()));
     }
 
-    public function read($id=NULL)
+    public function read()
     {
-        // si $id = null, on recup tous les articles
-        // sinon recup uniquement les données d'un article
+        $req = $this->db->query('SELECT description FROM categorie');
+        $data = $req->fetchAll();
 
-        // ajouter close WHERE au besoin
+
+        $d = array();
+        foreach ($data as $e)
+        {
+            $d[] = $e;
+        }
+
+        var_dump($d);
     }
 
     public function delete($id){

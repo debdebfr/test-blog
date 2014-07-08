@@ -7,11 +7,14 @@ catch (Execption $e) {
     die('Erreur : '.$e->getMessage());
 }
 
-
+/*
 function loadClass($class)
 {
-    require_once 'model/'.$class.'Manager.php';
+
     require_once 'controller/'.$class.'.php';
+    require_once 'controller/'.$class.'.php';
+
 }
 
 spl_autoload_register('loadClass');
+*/
