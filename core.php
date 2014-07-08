@@ -7,6 +7,12 @@ catch (Execption $e) {
     die('Erreur : '.$e->getMessage());
 }
 
+
+date_default_timezone_set('Europe/Paris');
+$date = date('Y-m-d', time());
+
+
+
 /*
 function loadClass($class)
 {

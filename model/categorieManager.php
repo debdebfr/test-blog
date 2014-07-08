@@ -23,7 +23,7 @@ class CategorieManager
 
     public function read()
     {
-        $req = $this->db->query('SELECT id,description FROM categorie');
+        $req = $this->db->query('SELECT * FROM categorie');
         $data = $req->fetchAll();
 
 

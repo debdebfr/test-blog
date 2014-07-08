@@ -4,9 +4,13 @@ class Article
 {
     protected $id, $titre, $contenu, $date, $id_categorie, $id_auteur;
 
-    public function __construct()
+    public function __construct($titre,$contenu,$date,$id_auteur,$id_categorie)
     {
-        // ici le constructeur
+        $this->setTitre($titre);
+        $this->setContenu($contenu);
+        $this->setDate($date);
+        $this->setIdAuteur($id_auteur);
+        $this->setIdCategorie($id_categorie);
     }
 
     public function afficherTaille()

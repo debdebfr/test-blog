@@ -31,33 +31,36 @@ $d = $manager->read();
 </head>
 <body>
 
-<h1>Gestion des catégoeries</h1>
-
-// lister les catégorie dans un tableau
-
-// ajouter avec un form une catégorie
-
-<form action="" method="post">
-    <input type="text" name="description" id=""/>
-    <input type="submit" value="ajouter"/>
-</form>
-
-<?php foreach($d as $e): ?>
-
-<table class="table table-striped">
-    <tr>
-        <th>Id</th>
-        <th>Description</th>
-    </tr>
-    <tr>
-        <td><?php echo $e["id"]?></td>
-        <td><?php echo $e["description"]?></td>
-    </tr>
-</table>
-
-<?php endforeach; ?>
+<div class="container">
+    <h1>Gestion des catégories</h1>
 
 
+    <form role="form-horizontal" action="" method="post">
+        <div class="form-group">
+            <label for="text">Nom de la catégorie</label>
+            <input type="text" name="description" class="form-control" id="" placeholder="Nom de la catégorie">
+
+            <button type="submit" class="btn btn-default">Ajouter</button>
+        </div>
+    </form>
+
+    <table class="table table-striped">
+        <tr>
+            <th>Id</th>
+            <th>Description</th>
+        </tr>
+
+    <?php foreach($d as $e): ?>
+
+        <tr>
+            <td><?php echo $e["id"]?></td>
+            <td><?php echo $e["description"]?></td>
+        </tr>
+
+    <?php endforeach; ?>
+
+    </table>
+</div>
 
 
 

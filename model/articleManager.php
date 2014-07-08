@@ -4,21 +4,39 @@ class articleManager
 {
     protected $db;
 
-    public function add()
+    public function __construct($db)
     {
-        // reception tableau POST du form
-        // req $sql insertion
-
-        return true;
-
+        $this->setDB($db);
     }
 
-    public function read($id=NULL)
+    public function setDB($db)
     {
-        // si $id = null, on recup tous les articles
-        // sinon recup uniquement les données d'un article
+        $this->db = $db;
+    }
 
-        // ajouter close WHERE au besoin
+    public function add(Article $art)
+    {
+        $req = $this->db->prepare('INSERT INTO article VALUES("", :titre, :contenu, :date, :id_auteur, :id_categorie)');
+        $req->execute(array("titre" => $art->getTitre(),
+                            "contenu" => $art->getContenu(),
+                            "date" => $art->getDate(),
+                            "id_auteur" => $art->getIdAuteur(),
+                            "id_categorie" => $art->getIdCategorie()));
+    }
+
+    public function read()
+    {
+        $req = $this->db->query('SELECT * FROM article');
+        $data = $req->fetchAll();
+
+
+        $d = array();
+        foreach ($data as $e)
+        {
+            $d[] = $e;
+        }
+
+        return $d;
     }
 
     public function update($id, array $datas)
