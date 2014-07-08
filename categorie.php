@@ -16,7 +16,7 @@ if ( isset($_POST) && isset($_POST['description']) )
 
 }
 
-$manager->read();
+$d = $manager->read();
 
 
 ?>
@@ -41,6 +41,23 @@ $manager->read();
     <input type="text" name="description" id=""/>
     <input type="submit" value="ajouter"/>
 </form>
+
+<?php foreach($d as $e): ?>
+
+<table class="table table-striped">
+    <tr>
+        <th>Id</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td><?php echo $e["id"]?></td>
+        <td><?php echo $e["description"]?></td>
+    </tr>
+</table>
+
+<?php endforeach; ?>
+
+
 
 
 

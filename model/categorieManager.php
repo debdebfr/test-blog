@@ -23,7 +23,7 @@ class CategorieManager
 
     public function read()
     {
-        $req = $this->db->query('SELECT description FROM categorie');
+        $req = $this->db->query('SELECT id,description FROM categorie');
         $data = $req->fetchAll();
 
 
@@ -33,7 +33,7 @@ class CategorieManager
             $d[] = $e;
         }
 
-        var_dump($d);
+        return $d;
     }
 
     public function delete($id){
