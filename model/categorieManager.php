@@ -1,17 +1,24 @@
 <?php
 
-class categorieManager
+class CategorieManager
 {
     protected $db;
 
-
-    public function add()
+    public function __construct($db)
     {
-        // reception tableau POST du form
-        // req $sql insertion
+        $this->setDB($db);
+    }
 
-        return true;
+    public function setDB($db)
+    {
+        $this->db = $db;
+    }
 
+
+    public function add(Categorie $cat)
+    {
+        $req = $this->db->prepare('INSERT INTO categorie VALUES("", :desc)');
+        $req->execute(array("desc" => $cat->getDescription()));
     }
 
     public function read($id=NULL)

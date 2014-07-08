@@ -1,11 +1,11 @@
 <?php
 
-class Grade
+class Categorie
 {
     protected $id, $description;
 
-    public function __construct(){
-
+    public function __construct($desc){
+        $this->setDescription($desc);
     }
 
     // Getters
