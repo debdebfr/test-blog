@@ -19,43 +19,28 @@ if ( isset($_POST) && isset($_POST["pseudo"]) && isset($_POST["password"]) && is
 
 ?>
 
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Document</title>
-    <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body>
+<!-- Menu de navigation -->
+<?php include('menu.php'); ?>
 
+<div class="container">
 
+    <h1>Création de compte</h1>
 
+    <form role="form-horizontal" action="" method="post">
+        <div class="form-group">
+            <label for="titre">Votre pseudo :</label>
+            <input type="text" name="pseudo" class="form-control" id="" placeholder="">
 
-<h1>Création de compte</h1>
+            <br/><label for="titre">Votre mot de passe :</label>
+            <input type="password" name="password" class="form-control" id="" placeholder="">
 
-<form role="form-horizontal" action="" method="post">
-    <div class="form-group">
-        <label for="titre">Votre pseudo :</label>
-        <input type="text" name="pseudo" class="form-control" id="" placeholder="">
+            <br/><label for="titre">Votre adresse email :</label>
+            <input type="text" name="email" class="form-control" id="" placeholder="">
 
-        <br/><label for="titre">Votre mot de passe :</label>
-        <input type="password" name="password" class="form-control" id="" placeholder="">
+            <br/><button type="submit" class="btn btn-default">Créer son compte</button>
+        </div>
+    </form>
 
-        <br/><label for="titre">Votre adresse email :</label>
-        <input type="text" name="email" class="form-control" id="" placeholder="">
+</div>
 
-        <br/><button type="submit" class="btn btn-default">Créer son compte</button>
-    </div>
-</form>
-
-
-
-
-
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="js/bootstrap.min.js"></script>
-</body>
-</html>
+<?php include('footer.php'); ?>

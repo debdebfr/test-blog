@@ -21,15 +21,8 @@ $d = $manager->read();
 
 ?>
 
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Document</title>
-    <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body>
+<!-- Menu de navigation -->
+<?php include('menu.php'); ?>
 
 <div class="container">
     <h1>Gestion des catégories</h1>
@@ -62,13 +55,4 @@ $d = $manager->read();
     </table>
 </div>
 
-
-
-
-
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="js/bootstrap.min.js"></script>
-</body>
-</html>
+<?php include('footer.php'); ?>

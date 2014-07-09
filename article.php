@@ -18,15 +18,11 @@ if ( isset($_POST) && isset($_POST["titre"]))
 
 ?>
 
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Document</title>
-    <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body>
+<!-- Menu de navigation -->
+<?php include('menu.php'); ?>
+
+
+<?php  ?>
 
 <div class="container">
     <h1>Nouvel article</h1>
@@ -42,9 +38,11 @@ if ( isset($_POST) && isset($_POST["titre"]))
             <label for="date">Date de l'article</label>
             <input type="date" name="date" class="form-control" id="" placeholder="Format : AAAA/MM/JJ" value="<?php echo $date; ?>">
 
+            <!-- A ajouter avec les données de sessions -->
             <label for="id_auteur">id_auteur</label>
             <input type="text" name="id_auteur" class="form-control" id="" placeholder="Entrez le numéro d'auteur">
 
+            <!-- Recuperer dans la BDD le tableau des categories -->
             <label for="id_categorie">id_categorie</label>
             <input type="text" name="id_categorie" class="form-control" id="" placeholder="Entrez le numéro de la catégorie">
 
@@ -53,12 +51,4 @@ if ( isset($_POST) && isset($_POST["titre"]))
     </form>
 </div>
 
-
-
-
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="js/bootstrap.min.js"></script>
-</body>
-</html>
+<?php include('footer.php'); ?>
