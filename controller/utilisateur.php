@@ -4,7 +4,13 @@ class Utilisateur
 {
     protected $id, $pseudo, $password, $email, $id_grade;
 
-    public function __construct(){
+    public function __construct($pseudo,$password,$email)
+    {
+        $this->setPseudo($pseudo);
+        $this->setPassword($password);
+        $this->setEmail($email);
+
+        $this->setIdGrade(0);
 
     }
 

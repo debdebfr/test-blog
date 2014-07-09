@@ -4,6 +4,16 @@ class utilisateurManager
 {
     protected $db;
 
+    public function __construct($db)
+    {
+        $this->setDB($db);
+    }
+
+    public function setDB($db)
+    {
+        $this->db = $db;
+    }
+
     //méthodes
     public function pseudoValide($pseudo){
 
@@ -14,12 +24,14 @@ class utilisateurManager
     }
 
 
-    public function add()
+    public function add(Utilisateur $user)
     {
-        // reception tableau POST du form
-        // req $sql insertion
-
-        return true;
+        $req = $this->db->prepare('INSERT INTO utilisateur VALUES("", :pseudo, :password, :email, 1)');
+        $req->execute(array(
+                                "pseudo" => $user->getPseudo(),
+                                "password" => $user->getPassword(),
+                                "email" => $user->getEmail(),
+        ));
 
     }
 
