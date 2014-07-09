@@ -1,30 +1,19 @@
 <?php
 
 require_once 'core.php';
-require_once 'controller/Article.php';
-require_once 'model/ArticleManager.php';
-
-require_once 'model/CategorieManager.php';
 
 $managerCat = new CategorieManager($bdd);
 $liste = $managerCat->read();
 
-
-
 $manager = new ArticleManager($bdd);
-
-
 
 
 if ( isset($_POST) && isset($_POST["titre"]))
 {
-    $art = new Article($_POST['titre'],$_POST['contenu'],$_POST['date'],$_POST['id_auteur'],$_POST['id_categorie']);
-
+    $art = new Article($_POST['titre'],$_POST['contenu'],$_POST['date'],$user->getId(),$_POST['id_categorie']);
 
     // enregistrement dans la BDD
     $manager->add($art);
-
-
 }
 
 ?>
@@ -33,7 +22,7 @@ if ( isset($_POST) && isset($_POST["titre"]))
 <?php include('menu.php'); ?>
 
 
-<?php  ?>
+
 
 <div class="container">
     <h1>Nouvel article</h1>
@@ -48,10 +37,6 @@ if ( isset($_POST) && isset($_POST["titre"]))
 
             <label for="date">Date de l'article</label>
             <input type="date" name="date" class="form-control" id="" placeholder="Format : AAAA/MM/JJ" value="<?php echo $date; ?>">
-
-            <!-- A ajouter avec les données de sessions -->
-            <label for="id_auteur">id_auteur</label>
-            <input type="text" name="id_auteur" class="form-control" id="" placeholder="Entrez le numéro d'auteur">
 
             <label for="id_categorie">Catégorie</label>
             <select class="form-control" name="id_categorie">

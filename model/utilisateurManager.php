@@ -1,6 +1,6 @@
 <?php
 
-class utilisateurManager
+class UtilisateurManager
 {
     protected $db;
 
@@ -15,8 +15,36 @@ class utilisateurManager
     }
 
     //méthodes
-    public function pseudoValide($pseudo){
+    public function pseudoExist(Utilisateur $userATester)
+    {
+        // req dans la bdd avec whre sur le pseudo de l'object courant
+        $req = $this->db->prepare('SELECT * FROM utilisateur WHERE pseudo = :pseudo');
+        $req->execute(array(
+            "pseudo" => $userATester->getPseudo(),
+        ));
 
+        return (bool) $req->fetchColumn();
+
+    }
+
+    public function recupPassword(Utilisateur $userATester)
+    {
+        $req = $this->db->prepare('SELECT password FROM utilisateur WHERE pseudo = :pseudo');
+        $req->execute(array('pseudo' => $userATester->getPseudo()));
+
+        $d = $req->fetch();
+
+        return $d['password'];
+    }
+
+    public function recupId(Utilisateur $userATester)
+    {
+        $req = $this->db->prepare('SELECT id FROM utilisateur WHERE pseudo = :pseudo');
+        $req->execute(array('pseudo' => $userATester->getPseudo()));
+
+        $d = $req->fetch();
+
+        return $d['id'];
     }
 
     public function emailValide($email){

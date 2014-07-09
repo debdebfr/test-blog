@@ -1,8 +1,6 @@
 <?php
 
 require_once 'core.php';
-require_once 'controller/Utilisateur.php';
-require_once 'model/UtilisateurManager.php';
 
 $manager = new UtilisateurManager($bdd);
 
@@ -10,10 +8,8 @@ if ( isset($_POST) && isset($_POST["pseudo"]) && isset($_POST["password"]) && is
 {
     $user = new Utilisateur($_POST['pseudo'],$_POST['password'],$_POST['email']);
 
-
     // enregistrement dans la BDD
     $manager->add($user);
-
 
 }
 
@@ -44,3 +40,24 @@ if ( isset($_POST) && isset($_POST["pseudo"]) && isset($_POST["password"]) && is
 </div>
 
 <?php include('footer.php'); ?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

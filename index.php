@@ -9,7 +9,6 @@ $d = $manager->read();
 
 ?>
 
-
 <!-- Menu de navigation -->
 <?php include('menu.php'); ?>
 

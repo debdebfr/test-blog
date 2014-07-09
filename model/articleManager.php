@@ -1,6 +1,6 @@
 <?php
 
-class articleManager
+class ArticleManager
 {
     protected $db;
 

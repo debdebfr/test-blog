@@ -1,23 +1,17 @@
 <?php
 
 require_once 'core.php';
-require_once 'controller/Categorie.php';
-require_once 'model/CategorieManager.php';
 
 $manager = new CategorieManager($bdd);
 if ( isset($_POST) && isset($_POST['description']) )
 {
     $cat = new Categorie($_POST['description']);
-
-
     // enregistrement dans la BDD
     $manager->add($cat);
-
 
 }
 
 $d = $manager->read();
-
 
 ?>
 

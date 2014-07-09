@@ -15,6 +15,7 @@
             <li <?php if( $_SERVER['SCRIPT_NAME']== "/blog/categorie.php"){echo 'class="active"';}; ?>><a href="categorie.php">Gestion des catégories</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
+            <li <?php if( $_SERVER['SCRIPT_NAME']== "/blog/connexion.php"){echo 'class="active"';}; ?>><a href="connexion.php">Se connecter</a></li>
             <li <?php if( $_SERVER['SCRIPT_NAME']== "/blog/inscription.php"){echo 'class="active"';}; ?>><a href="inscription.php">S'inscrire</a></li>
         </ul>
     </div>
