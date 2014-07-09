@@ -26,7 +26,7 @@ class ArticleManager
 
     public function read()
     {
-        $req = $this->db->query('SELECT * FROM article INNER JOIN categorie ON article.id_categorie = categorie.id');
+        $req = $this->db->query('SELECT * FROM article INNER JOIN categorie ON article.id_categorie = categorie.id INNER JOIN utilisateur ON article.id_auteur = utilisateur.id');
         $data = $req->fetchAll();
 
 

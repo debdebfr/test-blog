@@ -13,17 +13,27 @@ $d = $manager->read();
 <?php include('menu.php'); ?>
 
 <div class="container">
-
-    <h1>Page d'accueil du blog<small> Liste des articles</small></h1>
-    <hr/>
-    <br/><br/>
+    <div class="page-header">
+        <h1>Page d'accueil du blog<small> Liste des articles</small></h1>
+        <br/><br/>
+    </div>
 
 <?php foreach($d as $e): ?>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <?php echo $e["titre"]?>
+            <div class="pull-right">
+                <small><?php echo $e["date"]= date("d/m/Y");  ?><span class="text-right"> | dans <strong><?php echo $e["description"]?></strong></small>
+            </div>
+        </div>
 
-    <h3><?php echo $e["titre"]?></h3>
-    <small><?php echo $e["date"]= date("d-m-Y");  ?> <span class="text-right"><div class="pull-right"> Catégorie : <?php echo $e["description"]?></div></small><br/><br/>
-    <p><?php echo $e["contenu"]?></p>
-
+        <div class="panel-body">
+            <p><?php echo $e["contenu"]?></p>
+            <div class="pull-right">
+                <em>- <?php echo $e["pseudo"]?></em>
+            </div>
+        </div>
+    </div>
 
     <hr/>
 <?php endforeach; ?>

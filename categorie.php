@@ -26,9 +26,8 @@ $d = $manager->read();
         <div class="form-group">
             <label for="text">Nom de la catégorie</label>
             <input type="text" name="description" class="form-control" id="" placeholder="Nom de la catégorie">
-
-            <button type="submit" class="btn btn-default">Ajouter</button>
         </div>
+            <button type="submit" class="btn btn-default">Ajouter</button>
     </form>
 
     <table class="table table-striped">
