@@ -4,7 +4,18 @@ require_once 'core.php';
 require_once 'controller/Article.php';
 require_once 'model/ArticleManager.php';
 
+require_once 'model/CategorieManager.php';
+
+$managerCat = new CategorieManager($bdd);
+$liste = $managerCat->read();
+
+
+
 $manager = new ArticleManager($bdd);
+
+
+
+
 if ( isset($_POST) && isset($_POST["titre"]))
 {
     $art = new Article($_POST['titre'],$_POST['contenu'],$_POST['date'],$_POST['id_auteur'],$_POST['id_categorie']);
@@ -45,6 +56,16 @@ if ( isset($_POST) && isset($_POST["titre"]))
             <!-- Recuperer dans la BDD le tableau des categories -->
             <label for="id_categorie">id_categorie</label>
             <input type="text" name="id_categorie" class="form-control" id="" placeholder="Entrez le numéro de la catégorie">
+
+            <?php
+
+            foreach ($liste as $e)
+            {
+                echo $e['description'].'<br />';
+            }
+
+            ?>
+
 
         </div>
         <button type="submit" class="btn btn-default">Ajouter</button>
