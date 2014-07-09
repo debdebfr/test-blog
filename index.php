@@ -19,12 +19,13 @@ $d = $manager->read();
     <hr/>
     <br/><br/>
 
-
 <?php foreach($d as $e): ?>
 
     <h3><?php echo $e["titre"]?></h3>
-    <small><?php echo $e["date"]= date("d-m-Y");  ?></small><br/><br/>
+    <small><?php echo $e["date"]= date("d-m-Y");  ?> <span class="text-right"><div class="pull-right"> Catégorie : <?php echo $e["description"]?></div></small><br/><br/>
     <p><?php echo $e["contenu"]?></p>
+
+
     <hr/>
 <?php endforeach; ?>
 

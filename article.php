@@ -53,19 +53,12 @@ if ( isset($_POST) && isset($_POST["titre"]))
             <label for="id_auteur">id_auteur</label>
             <input type="text" name="id_auteur" class="form-control" id="" placeholder="Entrez le numéro d'auteur">
 
-            <!-- Recuperer dans la BDD le tableau des categories -->
-            <label for="id_categorie">id_categorie</label>
-            <input type="text" name="id_categorie" class="form-control" id="" placeholder="Entrez le numéro de la catégorie">
-
-            <?php
-
-            foreach ($liste as $e)
-            {
-                echo $e['description'].'<br />';
-            }
-
-            ?>
-
+            <label for="id_categorie">Catégorie</label>
+            <select class="form-control" name="id_categorie">
+                <?php foreach ($liste as $e): ?>
+                    <option value="<?php echo $e['id']; ?>"><?php echo $e['description']; ?></option>
+                <?php endforeach; ?>
+            </select>
 
         </div>
         <button type="submit" class="btn btn-default">Ajouter</button>
