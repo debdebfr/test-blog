@@ -71,9 +71,23 @@ class UtilisateurManager
         return $req->fetch();
     }
 
+    public function getAllUsers()
+    {
+        $req = $this->db->query('SELECT u.id AS id, u.pseudo AS pseudo, u.email AS email, g.user_grade AS grade
+                                 FROM utilisateur u INNER JOIN grade g ON u.id_grade = g.id');
+        return $req->fetchAll();
+
+    }
+
     public function delete($id)
     {
-        //supression de l'utilisateur
+        // suppression de ses articles
+        $req = $this->db->prepare('DELETE FROM article WHERE id_auteur = :id');
+        $req->execute(array('id'=>$id));
+        $req->closeCursor();
+
+        $req = $this->db->prepare('DELETE FROM utilisateur WHERE id = :id');
+        $req->execute(array('id'=>$id));
     }
 
     public function update($id)
