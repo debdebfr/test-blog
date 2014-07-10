@@ -24,8 +24,10 @@ class ArticleManager
                             "id_categorie" => $art->getIdCategorie()));
     }
 
-    public function read()
+    public function read($id=NULL)
     {
+        $id = "WHERE id=$id";
+        if(isset($id)){ $id = $id; }
         $req = $this->db->query('SELECT * FROM article INNER JOIN categorie ON article.id_categorie = categorie.id INNER JOIN utilisateur ON article.id_auteur = utilisateur.id');
         $data = $req->fetchAll();
 
