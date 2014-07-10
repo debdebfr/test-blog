@@ -18,6 +18,7 @@ $d = $manager->read();
         <br/><br/>
     </div>
 
+
 <?php foreach($d as $e): ?>
     <div class="panel panel-default">
         <div class="panel-heading">

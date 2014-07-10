@@ -63,12 +63,12 @@ class UtilisateurManager
 
     }
 
-    public function read($id=NULL)
+    public function read($id)
     {
-        // si $id = null, on recup tous les articles
-        // sinon recup uniquement les données d'un article
+        $req = $this->db->prepare('SELECT * FROM utilisateur WHERE id = :id');
+        $req->execute(array('id'=>$id));
 
-        // ajouter close WHERE au besoin
+        return $req->fetch();
     }
 
     public function delete($id)

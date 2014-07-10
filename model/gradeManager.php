@@ -6,28 +6,42 @@ class GradeManager
 {
     protected $db;
 
+    public function __construct($db)
+    {
+        $this->setDb($db);
+    }
+
+    public function setDb($db)
+    {
+        $this->db = $db;
+    }
+
     const GRADE_ADMIN = 1;
     const GRADE_NEWSER = 2;
 
     public function addGrade(User $user, $grade)
     {
-        // on vérifie que l'user existe ainsi que le grade
-        // req ajout
 
     }
 
     public function updateGrade(User $user, $grade)
     {
-        // on vérifie que l'user existe ainsi que le grade
-        // on vérifie qu'il n'a pas déjà le même grade > sinon return false
 
-        // req de modiff et return true;
     }
 
-    public function deleteGrade(User $user, $grade)
+    public function deleteGrade()
     {
-        // on vérifie que l'user existe ainsi que le grade
 
-        // req de suppresion à partir de l'id
     }
+
+    public function getUserGrade($id)
+    {
+        $req = $this->db->prepare(' SELECT user_grade FROM utilisateur u INNER JOIN grade g
+                                    ON u.id_grade = g.id
+                                    WHERE u.id = :id');
+        $req->execute(array('id' => $id));
+
+        return $req->fetch();
+    }
+
 }

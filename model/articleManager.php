@@ -54,4 +54,20 @@ class ArticleManager
         // on vérifie que l'id existe et on exec la req de suppr
     }
 
+    public function getArrayArticleById($id)
+    {
+
+        $req = $this->db->prepare('SELECT * FROM article WHERE id_auteur = :id');
+        $req->execute(array('id' => $id));
+        $data = $req->fetchAll();
+
+        $d = array();
+        foreach ($data as $e)
+        {
+            $d[] = $e;
+        }
+
+        return $d;
+    }
+
 }
