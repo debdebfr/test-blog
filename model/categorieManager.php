@@ -37,7 +37,8 @@ class CategorieManager
     }
 
     public function delete($id){
-        //suppression de la categorie
+        $req = $this->db->prepare('DELETE FROM categorie WHERE id = :id');
+        $req->execute(array("id" => $id));
     }
 
     public function update($id){
