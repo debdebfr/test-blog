@@ -5,9 +5,19 @@ require_once 'core.php';
 $manager = new CategorieManager($bdd);
 if ( isset($_POST) && isset($_POST['description']) )
 {
-    $cat = new Categorie($_POST['description']);
-    // enregistrement dans la BDD
-    $manager->add($cat);
+    if (isset($_POST['id'])) { $id = $_POST['id'];}
+
+    $cat = new Categorie($_POST['description'], $id=NULL);
+
+    if (isset($_POST['add']))
+    {
+        $manager->add($cat);
+    }
+    if (isset($_POST['update']))
+    {
+        $manager->update($cat);
+        header('location: categorie.php');
+    }
 
 }
 
@@ -19,10 +29,6 @@ if (isset ($_GET["suppr"]) && !empty($_GET["suppr"]))
     header('location: categorie.php');
 }
 
-if (isset ($_GET["update"]) && !empty($_GET["update"]))
-{
-    $description  
-}
 
 ?>
 
@@ -36,9 +42,29 @@ if (isset ($_GET["update"]) && !empty($_GET["update"]))
     <form role="form-horizontal" action="" method="post">
         <div class="form-group">
             <label for="text">Nom de la catégorie</label>
-            <input type="text" name="description" class="form-control" id="" placeholder="Nom de la catégorie" value="<?php echo $description ?>">
+            <input type="text" name="description" class="form-control" id="" placeholder="Nom de la catégorie"
+                   value="<?php
+                        if (isset ($_GET["update"]) && !empty($_GET["update"]))
+                        {
+                            $data = $manager->getById($_GET["update"]);
+                            echo $data['description'];
+                        }
+                   ?>">
         </div>
-            <button type="submit" class="btn btn-default">Ajouter</button>
+            <?php
+            if (isset($_GET["update"]) && !empty($_GET["update"]))
+            {
+                ?>
+                <button type="submit" class="btn btn-info" name="update">Valider la modification</button>
+                <a href="categorie.php"><button type="button" class="btn btn-info" >Annuler</button></a>
+                <input type="hidden" name="id" value="<?php echo $_GET["update"]; ?>"/><br/><br/>
+                <?php
+            }
+            else
+            {
+                echo '<button type="submit" class="btn btn-default" name="add">Ajouter</button>';
+            } ?>
+
     </form>
 
     <table class="table table-striped">
