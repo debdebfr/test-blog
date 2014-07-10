@@ -11,8 +11,7 @@ if ( isset($_POST) && isset($_POST['pseudo']) && isset($_POST['password']) )
     if ( $manager->pseudoExist($userATester) )
     {
         $bon_password = $manager->recupPassword($userATester);
-
-        if ($bon_password == $userATester->getPseudo())
+        if ($bon_password == $_POST["password"])
         {
             $userOK = $userATester;
             $userOK->setId($manager->recupId($userOK));
@@ -20,6 +19,7 @@ if ( isset($_POST) && isset($_POST['pseudo']) && isset($_POST['password']) )
             // création de la supervariable session
 
             $_SESSION['user'] = $userOK;
+            header('location: index.php');
 
         }
         else

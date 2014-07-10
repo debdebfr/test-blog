@@ -29,6 +29,15 @@ if (isset ($_GET["suppr"]) && !empty($_GET["suppr"]))
     header('location: categorie.php');
 }
 
+if (isset ($_GET["update"]) && !empty($_GET["update"]))
+{
+    $data = $manager->getById($_GET["update"]);
+    $descri = $data['description'];
+}
+else
+{
+    $descri = "";
+}
 
 ?>
 
@@ -42,28 +51,19 @@ if (isset ($_GET["suppr"]) && !empty($_GET["suppr"]))
     <form role="form-horizontal" action="" method="post">
         <div class="form-group">
             <label for="text">Nom de la catégorie</label>
-            <input type="text" name="description" class="form-control" id="" placeholder="Nom de la catégorie"
-                   value="<?php
-                        if (isset ($_GET["update"]) && !empty($_GET["update"]))
-                        {
-                            $data = $manager->getById($_GET["update"]);
-                            echo $data['description'];
-                        }
-                   ?>">
+            <input type="text" name="description" class="form-control" id="" placeholder="Nom de la catégorie" value="<?php echo $descri; ?>">
         </div>
-            <?php
-            if (isset($_GET["update"]) && !empty($_GET["update"]))
-            {
-                ?>
+            <?php if (isset($_GET["update"]) && !empty($_GET["update"])): ?>
+
                 <button type="submit" class="btn btn-info" name="update">Valider la modification</button>
                 <a href="categorie.php"><button type="button" class="btn btn-info" >Annuler</button></a>
                 <input type="hidden" name="id" value="<?php echo $_GET["update"]; ?>"/><br/><br/>
-                <?php
-            }
-            else
-            {
-                echo '<button type="submit" class="btn btn-default" name="add">Ajouter</button>';
-            } ?>
+
+            <?php else: ?>
+
+                <button type="submit" class="btn btn-default" name="add">Ajouter</button>
+
+            <?php endif ?>
 
     </form>
 

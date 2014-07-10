@@ -6,11 +6,14 @@ $manager = new UtilisateurManager($bdd);
 
 if ( isset($_POST) && isset($_POST["pseudo"]) && isset($_POST["password"]) && isset($_POST["email"]))
 {
+
     $user = new Utilisateur($_POST['pseudo'],$_POST['password'],$_POST['email']);
 
-    // enregistrement dans la BDD
-    $manager->add($user);
-
+    if ( !$manager->pseudoExist($user) )
+    {
+        // enregistrement dans la BDD
+        $manager->add($user);
+    }
 }
 
 ?>
