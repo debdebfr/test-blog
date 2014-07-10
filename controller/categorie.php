@@ -4,8 +4,12 @@ class Categorie
 {
     protected $id, $description;
 
-    public function __construct($desc){
+    public function __construct($desc, $id=NULL){
         $this->setDescription($desc);
+        if (isset($id))
+        {
+            $this->setId($id);
+        }
     }
 
     // Getters

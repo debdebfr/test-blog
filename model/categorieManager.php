@@ -26,14 +26,20 @@ class CategorieManager
         $req = $this->db->query('SELECT * FROM categorie');
         $data = $req->fetchAll();
 
-
         $d = array();
         foreach ($data as $e)
         {
             $d[] = $e;
         }
-
         return $d;
+    }
+
+    public function getById($id)
+    {
+        $req = $this->db->prepare('SELECT * FROM categorie WHERE id = :id');
+        $req->execute(array('id' => $id));
+
+        return $req->fetch();
     }
 
     public function delete($id){
@@ -41,7 +47,12 @@ class CategorieManager
         $req->execute(array("id" => $id));
     }
 
-    public function update($id){
-        //Mise à jour de la catégorie dans la BDD si elle existe
+    public function update(Categorie $cat)
+    {
+        $req = $this->db->prepare('UPDATE categorie SET description = :description WHERE id = :id');
+        $req->execute(array(
+            'description' => $cat->getDescription(),
+            'id' => $cat->getId(),
+        ));
     }
 }
