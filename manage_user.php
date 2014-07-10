@@ -8,7 +8,7 @@ if ( isset($_GET['supprimer']) )
 {
     $idASuppr = (int) $_GET['supprimer'];
     $manager->delete($idASuppr);
-    heade('Location : manage_user.php');
+    header('Location : manage_user.php');
 }
 
 ?>
