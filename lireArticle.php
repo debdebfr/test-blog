@@ -1,10 +1,14 @@
 <?php
-if (isset($_GET) && isset($_GET["id"]) ):
-
+include('core.php');
 include('menu.php');
 
-$manager = new ArticleManager($bdd);
-$d = $manager->read();
+
+if (isset($_GET) && isset($_GET["id"]) ) {
+    $manager = new ArticleManager($bdd);
+    $d = $manager->read();
+
+}
+
 
 ?>
 
@@ -20,10 +24,3 @@ $d = $manager->read();
 
 <?php include('footer.php'); ?>
 
-<?php else:
-    {
-        header('location:index.php');
-    }
-?>
-
-<?php endif ?>
